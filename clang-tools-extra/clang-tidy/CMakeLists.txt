@@ -57,6 +57,7 @@ add_subdirectory(bugprone)
 add_subdirectory(cert)
 add_subdirectory(concurrency)
 add_subdirectory(cppcoreguidelines)
+add_subdirectory(dampsoft)
 add_subdirectory(darwin)
 add_subdirectory(fuchsia)
 add_subdirectory(google)
@@ -84,6 +85,7 @@ set(ALL_CLANG_TIDY_CHECKS
   clangTidyCERTModule
   clangTidyConcurrencyModule
   clangTidyCppCoreGuidelinesModule
+  clangTidyDampsoftModule
   clangTidyDarwinModule
   clangTidyFuchsiaModule
   clangTidyGoogleModule
