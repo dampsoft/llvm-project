@@ -55,6 +55,11 @@ extern volatile int CppCoreGuidelinesModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED CppCoreGuidelinesModuleAnchorDestination =
     CppCoreGuidelinesModuleAnchorSource;
 
+// This anchor is used to force the linker to link the DampsoftModule.
+extern volatile int DampsoftModuleAnchorSource;
+static int LLVM_ATTRIBUTE_UNUSED DampsoftModuleAnchorDestination =
+    DampsoftModuleAnchorSource;
+
 // This anchor is used to force the linker to link the DarwinModule.
 extern volatile int DarwinModuleAnchorSource;
 static int LLVM_ATTRIBUTE_UNUSED DarwinModuleAnchorDestination =
