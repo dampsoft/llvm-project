@@ -10,6 +10,7 @@
 #include "../ClangTidyModule.h"
 #include "../ClangTidyModuleRegistry.h"
 #include "AssertCheck.h"
+#include "ChangeValueSameParametersCheck.h"
 #include "InlineStaticVariableCheck.h"
 #include "LoggersCheck.h"
 #include "SociTransactionCheck.h"
@@ -22,6 +23,8 @@ class DampsoftModule : public ClangTidyModule {
 public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
     CheckFactories.registerCheck<AssertCheck>("dampsoft-assert");
+    CheckFactories.registerCheck<ChangeValueSameParametersCheck>(
+        "dampsoft-change-value-same-parameters");
     CheckFactories.registerCheck<InlineStaticVariableCheck>(
         "dampsoft-inline-static-variable");
     CheckFactories.registerCheck<LoggersCheck>(
