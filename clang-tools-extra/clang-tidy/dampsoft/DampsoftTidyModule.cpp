@@ -10,6 +10,9 @@
 #include "../ClangTidyModule.h"
 #include "../ClangTidyModuleRegistry.h"
 #include "AssertCheck.h"
+#include "InlineStaticVariableCheck.h"
+#include "LoggersCheck.h"
+#include "SociTransactionCheck.h"
 
 namespace clang {
 namespace tidy {
@@ -19,6 +22,12 @@ class DampsoftModule : public ClangTidyModule {
 public:
   void addCheckFactories(ClangTidyCheckFactories &CheckFactories) override {
     CheckFactories.registerCheck<AssertCheck>("dampsoft-assert");
+    CheckFactories.registerCheck<InlineStaticVariableCheck>(
+        "dampsoft-inline-static-variable");
+    CheckFactories.registerCheck<LoggersCheck>(
+        "dampsoft-loggers");
+    CheckFactories.registerCheck<SociTransactionCheck>(
+        "dampsoft-soci-transaction");
   }
 };
 
