@@ -5,6 +5,7 @@ set(LLVM_LINK_COMPONENTS
 
 add_clang_library(clangTidyDampsoftModule
   AssertCheck.cpp
+  ChangeValueSameParametersCheck.cpp
   InlineStaticVariableCheck.cpp
   LoggersCheck.cpp
   SociTransactionCheck.cpp
