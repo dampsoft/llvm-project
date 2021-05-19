@@ -9,6 +9,7 @@ add_clang_library(clangTidyDampsoftModule
   InlineStaticVariableCheck.cpp
   LoggersCheck.cpp
   SociTransactionCheck.cpp
+  ThisCaptureThreadFunctionCheck.cpp
 
   DampsoftTidyModule.cpp
 
