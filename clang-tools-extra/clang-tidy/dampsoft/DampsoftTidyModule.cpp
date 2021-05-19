@@ -14,6 +14,7 @@
 #include "InlineStaticVariableCheck.h"
 #include "LoggersCheck.h"
 #include "SociTransactionCheck.h"
+#include "ThisCaptureThreadFunctionCheck.h"
 
 namespace clang {
 namespace tidy {
@@ -31,6 +32,8 @@ public:
         "dampsoft-loggers");
     CheckFactories.registerCheck<SociTransactionCheck>(
         "dampsoft-soci-transaction");
+    CheckFactories.registerCheck<ThisCaptureThreadFunctionCheck>(
+        "dampsoft-this-capture-thread-function");
   }
 };
 
