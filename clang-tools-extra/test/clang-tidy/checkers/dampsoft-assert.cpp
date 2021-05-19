@@ -5,7 +5,7 @@
 void f() {
   assert(false);
 }
-// CHECK-MESSAGES: :6:3: warning: assert() must not be used since it terminates the program! [dampsoft-assert]
+// CHECK-MESSAGES: :[[@LINE-2]]:3: warning: assert() must not be used since it terminates the program! [dampsoft-assert]
 
 void awesome_f2() {
   return;
