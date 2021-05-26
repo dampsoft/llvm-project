@@ -9,6 +9,7 @@ add_clang_library(clangTidyDampsoftModule
   HeaderStdafxCheck.cpp
   HeaderUsingCheck.cpp
   InlineStaticVariableCheck.cpp
+  LambdaCaptureLeakCheck.cpp
   LoggersCheck.cpp
   SociTransactionCheck.cpp
   ThisCaptureThreadFunctionCheck.cpp
