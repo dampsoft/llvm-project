@@ -24,17 +24,17 @@ void SociTransactionCheck::check(const MatchFinder::MatchResult &Result) {
   const auto *MatchedDecl = Result.Nodes.getNodeAs<VarDecl>("x");
   auto VarName = MatchedDecl->getName();
   auto MatchedType = MatchedDecl->getType();
-  const auto *MatchedIdentifier = MatchedType.getBaseTypeIdentifier();
-  auto VarType = MatchedIdentifier->getName();
+  if (const auto *MatchedIdentifier = MatchedType.getBaseTypeIdentifier()) {
+    auto VarType = MatchedIdentifier->getName();
 
-  if (VarType != "transaction" || VarName == "") {
-    return;
+    if (VarType != "transaction" || VarName == "") {
+      return;
+    }
+
+    diag(MatchedDecl->getLocation(),
+         "soci::transaction used instead of ds::Transaction: %0")
+        << MatchedDecl;
   }
-
-  diag(MatchedDecl->getLocation(),
-       "soci::transaction used instead of ds::Transaction: %0")
-      << MatchedDecl;
-  // FIXME: Add fix
 }
 
 } // namespace dampsoft
