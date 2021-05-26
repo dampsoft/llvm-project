@@ -14,6 +14,7 @@
 #include "HeaderStdafxCheck.h"
 #include "HeaderUsingCheck.h"
 #include "InlineStaticVariableCheck.h"
+#include "LambdaCaptureLeakCheck.h"
 #include "LoggersCheck.h"
 #include "SociTransactionCheck.h"
 #include "ThisCaptureThreadFunctionCheck.h"
@@ -33,6 +34,8 @@ public:
         "dampsoft-header-using");
     CheckFactories.registerCheck<InlineStaticVariableCheck>(
         "dampsoft-inline-static-variable");
+    CheckFactories.registerCheck<LambdaCaptureLeakCheck>(
+        "dampsoft-lambda-capture-leak");
     CheckFactories.registerCheck<LoggersCheck>("dampsoft-loggers");
     CheckFactories.registerCheck<SociTransactionCheck>(
         "dampsoft-soci-transaction");
