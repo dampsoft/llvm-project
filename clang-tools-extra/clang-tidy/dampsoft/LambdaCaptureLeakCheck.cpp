@@ -30,10 +30,12 @@ void LambdaCaptureLeakCheck::check(const MatchFinder::MatchResult &Result) {
       auto *Arg = MatchedDecl->getArg(I);
       // Pre C++17 the Lambda-Term is wrapped in two additional layers
       if (auto *LambdaConstruct = dyn_cast<CXXConstructExpr>(Arg)) {
-        if (auto *TemporaryExpr = dyn_cast<MaterializeTemporaryExpr>(
-                LambdaConstruct->getArg(0))) {
-          this->analyseLambda(MatchedDecl, TemporaryExpr->getSubExpr(),
-                              ObjName);
+        if (LambdaConstruct->getNumArgs() > 0) {
+          if (auto *TemporaryExpr = dyn_cast<MaterializeTemporaryExpr>(
+                  LambdaConstruct->getArg(0))) {
+            this->analyseLambda(MatchedDecl, TemporaryExpr->getSubExpr(),
+                                ObjName);
+          }
         }
       }
       // In C++17 we can retrieve it directly
@@ -47,10 +49,12 @@ void LambdaCaptureLeakCheck::analyseLambda(const CXXMemberCallExpr *MatchedDecl,
                                            const std::string &ObjName) {
   if (auto *Lambda = dyn_cast<LambdaExpr>(LambdaTerm)) {
     for (const auto &Capture : Lambda->captures()) {
-      auto *Var = Capture.getCapturedVar();
-      if (Var->getDeclName().getAsString() == ObjName) {
-        diag(MatchedDecl->getExprLoc(),
-             "Lambda leak (self scoped SharedPtr) found");
+      if (Capture.capturesVariable()) {
+        auto *Var = Capture.getCapturedVar();
+        if (Var->getDeclName().getAsString() == ObjName) {
+          diag(MatchedDecl->getExprLoc(),
+               "Lambda leak (self scoped SharedPtr) found");
+        }
       }
     }
   }
