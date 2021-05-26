@@ -11,6 +11,7 @@
 #include "../ClangTidyModuleRegistry.h"
 #include "AssertCheck.h"
 #include "ChangeValueSameParametersCheck.h"
+#include "HeaderStdafxCheck.h"
 #include "InlineStaticVariableCheck.h"
 #include "LoggersCheck.h"
 #include "SociTransactionCheck.h"
@@ -26,10 +27,10 @@ public:
     CheckFactories.registerCheck<AssertCheck>("dampsoft-assert");
     CheckFactories.registerCheck<ChangeValueSameParametersCheck>(
         "dampsoft-change-value-same-parameters");
+    CheckFactories.registerCheck<HeaderStdafxCheck>("dampsoft-header-stdafx");
     CheckFactories.registerCheck<InlineStaticVariableCheck>(
         "dampsoft-inline-static-variable");
-    CheckFactories.registerCheck<LoggersCheck>(
-        "dampsoft-loggers");
+    CheckFactories.registerCheck<LoggersCheck>("dampsoft-loggers");
     CheckFactories.registerCheck<SociTransactionCheck>(
         "dampsoft-soci-transaction");
     CheckFactories.registerCheck<ThisCaptureThreadFunctionCheck>(
