@@ -28,6 +28,9 @@ private:
   llvm::Optional<FailureInfo>
   GetDeclFailureInfo(const NamedDecl *Decl,
                      const SourceManager &SM) const override;
+  bool isLanguageVersionSupported(const LangOptions &LangOpts) const override {
+    return LangOpts.CPlusPlus;
+  }
   DiagInfo GetDiagInfo(const NamingCheckId &ID,
                        const NamingCheckFailure &Failure) const override;
   llvm::Optional<FailureInfo>
