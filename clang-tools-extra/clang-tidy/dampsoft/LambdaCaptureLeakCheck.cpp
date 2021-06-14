@@ -49,7 +49,8 @@ void LambdaCaptureLeakCheck::analyseLambda(const CXXMemberCallExpr *MatchedDecl,
                                            const std::string &ObjName) {
   if (auto *Lambda = dyn_cast<LambdaExpr>(LambdaTerm)) {
     for (const auto &Capture : Lambda->captures()) {
-      if (Capture.capturesVariable()) {
+      if (Capture.capturesVariable() &&
+          Capture.getCaptureKind() == LCK_ByCopy) {
         auto *Var = Capture.getCapturedVar();
         if (Var->getDeclName().getAsString() == ObjName) {
           diag(MatchedDecl->getExprLoc(),
