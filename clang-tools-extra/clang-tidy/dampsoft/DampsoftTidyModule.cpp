@@ -30,8 +30,7 @@ public:
     CheckFactories.registerCheck<ChangeValueSameParametersCheck>(
         "dampsoft-change-value-same-parameters");
     CheckFactories.registerCheck<HeaderStdafxCheck>("dampsoft-header-stdafx");
-    CheckFactories.registerCheck<HeaderUsingCheck>(
-        "dampsoft-header-using");
+    CheckFactories.registerCheck<HeaderUsingCheck>("dampsoft-header-using");
     CheckFactories.registerCheck<InlineStaticVariableCheck>(
         "dampsoft-inline-static-variable");
     CheckFactories.registerCheck<LambdaCaptureLeakCheck>(
