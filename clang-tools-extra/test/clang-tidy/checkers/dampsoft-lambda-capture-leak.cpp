@@ -17,4 +17,6 @@ void test() {
 
   auto TestInstance2 = Test();
   TestInstance.addListener([TestInstance2]() { TestInstance2.doNothing(); });
+
+  TestInstance.addListener([&TestInstance]() { TestInstance.doNothing(); });
 }
