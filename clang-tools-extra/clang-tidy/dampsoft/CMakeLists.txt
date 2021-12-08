@@ -12,6 +12,7 @@ add_clang_library(clangTidyDampsoftModule
   LambdaCaptureLeakCheck.cpp
   LoggersCheck.cpp
   SociTransactionCheck.cpp
+  StdLockGuardCheck.cpp
   ThisCaptureThreadFunctionCheck.cpp
 
   DampsoftTidyModule.cpp

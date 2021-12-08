@@ -17,6 +17,7 @@
 #include "LambdaCaptureLeakCheck.h"
 #include "LoggersCheck.h"
 #include "SociTransactionCheck.h"
+#include "StdLockGuardCheck.h"
 #include "ThisCaptureThreadFunctionCheck.h"
 
 namespace clang {
@@ -38,6 +39,8 @@ public:
     CheckFactories.registerCheck<LoggersCheck>("dampsoft-loggers");
     CheckFactories.registerCheck<SociTransactionCheck>(
         "dampsoft-soci-transaction");
+    CheckFactories.registerCheck<StdLockGuardCheck>(
+        "dampsoft-std-lock-guard");
     CheckFactories.registerCheck<ThisCaptureThreadFunctionCheck>(
         "dampsoft-this-capture-thread-function");
   }
