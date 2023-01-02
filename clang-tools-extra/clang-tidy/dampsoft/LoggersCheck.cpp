@@ -18,7 +18,7 @@ namespace tidy {
 namespace dampsoft {
 
 llvm::Optional<RenamerClangTidyCheck::FailureInfo>
-LoggersCheck::GetDeclFailureInfo(const NamedDecl *Decl,
+LoggersCheck::getDeclFailureInfo(const NamedDecl *Decl,
                                  const SourceManager &SM) const {
   if (const auto *VariableDecl = dyn_cast<VarDecl>(Decl)) {
     auto Name = Decl->getName();
@@ -42,7 +42,7 @@ LoggersCheck::GetDeclFailureInfo(const NamedDecl *Decl,
 } // namespace dampsoft
 
 RenamerClangTidyCheck::DiagInfo
-LoggersCheck::GetDiagInfo(const NamingCheckId &ID,
+LoggersCheck::getDiagInfo(const NamingCheckId &ID,
                           const NamingCheckFailure &Failure) const {
   return DiagInfo{"invalid (too generic) name for %0 '%1'",
                   [&](DiagnosticBuilder &Diag) {
@@ -51,7 +51,7 @@ LoggersCheck::GetDiagInfo(const NamingCheckId &ID,
 }
 
 llvm::Optional<LoggersCheck::FailureInfo>
-LoggersCheck::GetMacroFailureInfo(const Token &MacroNameTok,
+LoggersCheck::getMacroFailureInfo(const Token &MacroNameTok,
                                   const SourceManager &SM) const {
   return None;
 }
