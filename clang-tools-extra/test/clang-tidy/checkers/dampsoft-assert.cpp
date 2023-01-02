@@ -1,6 +1,15 @@
 // RUN: %check_clang_tidy %s dampsoft-assert %t
 
-#include <assert.h>
+int abort() { return 0; }
+
+#ifdef NDEBUG
+#define assert(x) 1
+#else
+#define assert(x)                                                              \
+  if (!(x))                                                                    \
+  (void)abort()
+#endif
+
 
 void f() {
   assert(false);
