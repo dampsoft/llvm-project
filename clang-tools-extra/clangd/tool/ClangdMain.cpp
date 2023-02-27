@@ -253,7 +253,7 @@ opt<CodeCompleteOptions::IncludeInsertion> HeaderInsertion{
     "header-insertion",
     cat(Features),
     desc("Add #include directives when accepting code completions"),
-    init(CodeCompleteOptions().InsertIncludes),
+    init(CodeCompleteOptions::NeverInsert),
     values(
         clEnumValN(CodeCompleteOptions::IWYU, "iwyu",
                    "Include what you use. "
