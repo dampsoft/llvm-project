@@ -17,13 +17,13 @@ namespace clang {
 namespace tidy {
 namespace dampsoft {
 
-llvm::Optional<RenamerClangTidyCheck::FailureInfo>
+std::optional<RenamerClangTidyCheck::FailureInfo>
 LoggersCheck::getDeclFailureInfo(const NamedDecl *Decl,
                                  const SourceManager &SM) const {
   if (const auto *VariableDecl = dyn_cast<VarDecl>(Decl)) {
     auto Name = Decl->getName();
     if (Name != "logger") {
-      return None;
+      return std::nullopt;
     }
 
     auto MatchedType = VariableDecl->getType();
@@ -31,14 +31,14 @@ LoggersCheck::getDeclFailureInfo(const NamedDecl *Decl,
     auto VarType = MatchedIdentifier->getName();
 
     if (VarType != "Logger") {
-      return None;
+      return std::nullopt;
     }
 
     return RenamerClangTidyCheck::FailureInfo{"ds::log::Logger",
                                               "nonGenericName"};
   }
 
-  return None;
+  return std::nullopt;
 } // namespace dampsoft
 
 RenamerClangTidyCheck::DiagInfo
@@ -53,7 +53,7 @@ LoggersCheck::getDiagInfo(const NamingCheckId &ID,
 llvm::Optional<LoggersCheck::FailureInfo>
 LoggersCheck::getMacroFailureInfo(const Token &MacroNameTok,
                                   const SourceManager &SM) const {
-  return None;
+  return std::nullopt;
 }
 
 /*

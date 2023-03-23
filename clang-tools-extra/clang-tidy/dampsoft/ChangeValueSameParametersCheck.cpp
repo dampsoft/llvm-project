@@ -16,7 +16,7 @@ namespace clang {
 namespace tidy {
 namespace dampsoft {
 
-static llvm::Optional<std::string> getArgName(const clang::Expr *Expr) {
+static std::optional<std::string> getArgName(const clang::Expr *Expr) {
   // Local variable
   if (auto *Arg = dyn_cast<DeclRefExpr>(Expr)) {
     return Arg->getNameInfo().getName().getAsString();
@@ -46,8 +46,7 @@ static llvm::Optional<std::string> getArgName(const clang::Expr *Expr) {
       return getArgName(Constructor->getArg(0));
     }
   }
-
-  return None;
+  return std::nullopt;
 }
 
 static bool isMemberVariable(const clang::Expr *Expr) {
@@ -94,7 +93,7 @@ void ChangeValueSameParametersCheck::check(
     auto SecondArgName = getArgName(SecondArg);
 
     if (FirstArgName && SecondArgName) {
-      if (FirstArgName.getValue() == SecondArgName.getValue() &&
+      if (*FirstArgName == *SecondArgName &&
           isMemberVariable(FirstArg) == isMemberVariable(SecondArg)) {
         diag(MatchedDecl->getExprLoc(),
              "changeValue mustn't be called with the same parameter twice!");
