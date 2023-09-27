@@ -24,7 +24,7 @@ class HeaderStdafxCheckPPCallbacks : public PPCallbacks {
 public:
   HeaderStdafxCheckPPCallbacks(HeaderStdafxCheck *Check,
                                const SourceManager &SM,
-                               utils::FileExtensionsSet HeaderExtensions)
+                               FileExtensionsSet HeaderExtensions)
       : HeaderExtensions(std::move(HeaderExtensions)), SM(SM), Check(Check) {}
 
   void InclusionDirective(SourceLocation HashLoc, const Token &IncludeTok,
@@ -51,7 +51,7 @@ public:
 
 private:
   std::vector<SourceLocation> StdafxIncludes;
-  utils::FileExtensionsSet HeaderExtensions;
+  FileExtensionsSet HeaderExtensions;
 
   const SourceManager &SM;
   HeaderStdafxCheck *Check;

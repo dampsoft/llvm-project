@@ -50,7 +50,7 @@ LoggersCheck::getDiagInfo(const NamingCheckId &ID,
                   }};
 }
 
-llvm::Optional<LoggersCheck::FailureInfo>
+std::optional<LoggersCheck::FailureInfo>
 LoggersCheck::getMacroFailureInfo(const Token &MacroNameTok,
                                   const SourceManager &SM) const {
   return std::nullopt;

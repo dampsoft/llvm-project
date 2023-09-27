@@ -25,7 +25,7 @@ public:
       : RenamerClangTidyCheck(Name, Context) {}
 
 private:
-  llvm::Optional<FailureInfo>
+  std::optional<FailureInfo>
   getDeclFailureInfo(const NamedDecl *Decl,
                      const SourceManager &SM) const override;
   bool isLanguageVersionSupported(const LangOptions &LangOpts) const override {
@@ -33,7 +33,7 @@ private:
   }
   DiagInfo getDiagInfo(const NamingCheckId &ID,
                        const NamingCheckFailure &Failure) const override;
-  llvm::Optional<FailureInfo>
+  std::optional<FailureInfo>
   getMacroFailureInfo(const Token &MacroNameTok,
                       const SourceManager &SM) const override;
 };

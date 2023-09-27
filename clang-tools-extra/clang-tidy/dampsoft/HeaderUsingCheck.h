@@ -31,7 +31,7 @@ public:
   void storeOptions(ClangTidyOptions::OptionMap &Opts) override;
 
 private:
-  utils::FileExtensionsSet HeaderFileExtensions;
+  FileExtensionsSet HeaderFileExtensions;
   const std::string RawStringHeaderFileExtensions;
 };
 
